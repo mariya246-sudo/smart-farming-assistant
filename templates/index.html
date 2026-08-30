@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Farming Assistant</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef7ee;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .box {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 4px 15px #aaa;
+        }
+
+        h1 {
+            color: #2e7d32;
+        }
+
+        input {
+            margin: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f1f8e9;
+            border-radius: 12px;
+        }
+
+        .item {
+            font-size: 18px;
+            margin: 14px;
+        }
+
+        .advice {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>🌱 Smart Farming Assistant</h1>
+
+    <p>AI-Powered Crop Disease Detection</p>
+
+    <p>Upload a crop leaf image for analysis</p>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <input type="file" name="image" accept="image/*" required>
+
+        <br>
+
+        <button type="submit">🔍 Analyze Leaf</button>
+
+    </form>
+
+    {% if result %}
+
+    <div class="result">
+
+        <h2>🌾 Analysis Result</h2>
+
+        <div class="item">
+            🌱 <b>Crop:</b> {{ result.crop }}
+        </div>
+
+        <div class="item">
+            🦠 <b>Disease:</b> {{ result.disease }}
+        </div>
+
+        <div class="item">
+            📊 <b>Confidence:</b> {{ result.confidence }}%
+        </div>
+
+        <div class="item">
+            🚨 <b>Risk Level:</b> {{ result.risk }}
+        </div>
+
+        <div class="advice">
+            💡 <b>Advice</b>
+            <p>{{ result.advice }}</p>
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
